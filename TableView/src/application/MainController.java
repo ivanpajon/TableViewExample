@@ -1,10 +1,14 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -51,7 +55,7 @@ public class MainController implements Initializable {
 			
 			String linea = null;
 			while ((linea = br.readLine()) != null) {
-				webs.add(new Web(linea));  // Añadimos la direccion web al array
+				webs.add(new Web(linea));  // Añadimos la direccion web al array de la tabla
 			}
 			table.setItems(getWebs());  // Cargamos las webs en la tabla
 		}
@@ -75,8 +79,49 @@ public class MainController implements Initializable {
 	@FXML void borrarWeb(ActionEvent event) {
 		Web w = table.getSelectionModel().getSelectedItem();
 		table.getItems().remove(w);
+		webs.remove(table.getSelectionModel().getFocusedIndex());
+		
+		File f = new File("webs.txt");
+		
+	    try {
+	    	// Sobreescribimos el archivo para vaciarlo
+	    	FileWriter fw = new FileWriter(f, false);
+			fw.write("");
+			fw.close();
+			
+			for (Web web : webs) {guardarWeb(web);}  // Guardamos las webs resultantes en el archivo de texto vacio
+		}
+	    catch (IOException e) {
+			System.out.println(e);
+		}
     }
 	
+	private void guardarWeb(Web web) {
+		BufferedWriter bw = null;
+		
+		try {
+			bw = new BufferedWriter(new FileWriter("webs.txt", true));
+			
+			bw.write(web.getNombre());
+			bw.newLine();
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("No se encontro el archivo");
+		}
+		catch (IOException e) {
+			System.out.println("Error IO: " + e.getMessage());
+		}
+		finally {
+			if (bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					System.out.println("Error IO: " + e.getMessage());
+				}
+			}
+		}
+	}
+
 	@FXML void navegar(ActionEvent event) {
 		// Subproceso
 		Runtime r = Runtime.getRuntime();
@@ -94,6 +139,7 @@ public class MainController implements Initializable {
 				
 				if (coincidencia == 0) {
 					webs.add(w);  // Añadimos la web al array
+					guardarWeb(w);  // Guardamos la web en el archivo de texo
 				}
 			}
 		}
