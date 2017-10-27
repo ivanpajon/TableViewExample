@@ -11,8 +11,10 @@ import javax.swing.table.DefaultTableModel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,6 +24,8 @@ public class MainController implements Initializable {
 	@FXML private TableView<Web> table;
 
     @FXML private TableColumn<Web, String> columnWeb;
+    
+    @FXML private Button btnBorrar;
     
     private ObservableList<Web> webs = FXCollections.observableArrayList();
 
@@ -58,6 +62,11 @@ public class MainController implements Initializable {
 			}
 		}
 	}
+	
+	@FXML void borrarWeb(ActionEvent event) {
+		Web w = table.getSelectionModel().getSelectedItem();
+		table.getItems().remove(w);
+    }
 
 	private ObservableList<Web> getWebs() {
 		return webs;
