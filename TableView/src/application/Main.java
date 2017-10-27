@@ -3,8 +3,10 @@ package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 
 public class Main extends Application {
@@ -15,8 +17,11 @@ public class Main extends Application {
 	        Scene scene = new Scene(root);
 	        primaryStage.setTitle("FXML Welcome");
 	        primaryStage.setScene(scene);
+	        primaryStage.initStyle(StageStyle.TRANSPARENT);
+	        scene.setFill(Color.TRANSPARENT);
 	        primaryStage.show();
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
