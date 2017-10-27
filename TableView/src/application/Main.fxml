@@ -26,5 +26,14 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <JFXButton fx:id="btnClose" contentDisplay="CENTER" layoutX="264.0" onAction="#cerrarVentana" prefHeight="6.0" prefWidth="33.0" text=" " AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../close_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
