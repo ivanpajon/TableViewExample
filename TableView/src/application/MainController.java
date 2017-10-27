@@ -21,8 +21,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class MainController implements Initializable {
+	
+	@FXML private AnchorPane anchorPane;
 	
 	@FXML private TableView<Web> table;
 
@@ -119,6 +123,12 @@ public class MainController implements Initializable {
 	@FXML
     void cerrarVentana(ActionEvent event) {
 		System.exit(0);
+    }
+	
+	@FXML
+    void handle(MouseEvent event) {
+		//main.primaryStage.setX(event.getScreenX());
+        //main.primaryStage.setY(event.getScreenY());
     }
 
 	private ObservableList<Web> getWebs() {
