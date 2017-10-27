@@ -34,6 +34,8 @@ public class MainController implements Initializable {
     
     @FXML private TextField tfWeb;
     
+    @FXML private Button btnClose;
+    
     private ObservableList<Web> webs = FXCollections.observableArrayList();
 
 	@Override
@@ -112,6 +114,11 @@ public class MainController implements Initializable {
 			Web w = table.getSelectionModel().getSelectedItem();
 			tfWeb.setText(w.getNombre());
 		}
+    }
+	
+	@FXML
+    void cerrarVentana(ActionEvent event) {
+		System.exit(0);
     }
 
 	private ObservableList<Web> getWebs() {
