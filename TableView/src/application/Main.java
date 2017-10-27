@@ -17,8 +17,8 @@ public class Main extends Application {
 	        Scene scene = new Scene(root);
 	        primaryStage.setTitle("FXML Welcome");
 	        primaryStage.setScene(scene);
-	        primaryStage.initStyle(StageStyle.TRANSPARENT);
-	        scene.setFill(Color.TRANSPARENT);
+	        primaryStage.initStyle(StageStyle.TRANSPARENT);  // Le quita los bordes a la ventana
+	        scene.setFill(Color.TRANSPARENT);  // Le quita los bordes a la ventana
 	        primaryStage.show();
 		}
 		catch(Exception e) {
