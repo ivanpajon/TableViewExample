@@ -79,15 +79,17 @@ public class MainController implements Initializable {
 		Web w = new Web(tfWeb.getText());
 		
 		try {
-			p = r.exec("rundll32 url.dll,FileProtocolHandler http://" + w.getNombre());
-			
-			int coincidencia=0;
-			for (int i=0; i<webs.size(); i++) {
-				if (w.getNombre().equals(webs.get(i).getNombre())) {coincidencia++;}  // Comprobamos que la web introducida no este guardada
-			}
-			
-			if (coincidencia == 0) {
-				webs.add(w);  // Añadimos la web al array
+			if (!w.getNombre().equals("")) {  // Se comprueba que se ha introducido una url
+				p = r.exec("rundll32 url.dll,FileProtocolHandler http://" + w.getNombre());
+				
+				int coincidencia=0;
+				for (int i=0; i<webs.size(); i++) {
+					if (w.getNombre().equals(webs.get(i).getNombre())) {coincidencia++;}  // Comprobamos que la web introducida no este guardada
+				}
+				
+				if (coincidencia == 0) {
+					webs.add(w);  // Añadimos la web al array
+				}
 			}
 		}
 		catch (IOException e) {
