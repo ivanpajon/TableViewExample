@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -95,12 +96,20 @@ public class MainController implements Initializable {
 		catch (IOException e) {
 			System.out.println(e);
 		}
+		catch (NullPointerException e) {
+			System.out.println("No se ha seleccionado nada");
+		}
+		catch (RuntimeException e) {
+			System.out.println("Error runtime");
+		}
     }
 	
 	@FXML
     void seleccionarWeb(MouseEvent event) {
-		Web w = table.getSelectionModel().getSelectedItem();
-		tfWeb.setText(w.getNombre());
+		if (!tfWeb.getText().equals("")) {
+			Web w = table.getSelectionModel().getSelectedItem();
+			tfWeb.setText(w.getNombre());
+		}
     }
 
 	private ObservableList<Web> getWebs() {
