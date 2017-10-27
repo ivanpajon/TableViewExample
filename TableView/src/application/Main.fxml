@@ -17,7 +17,7 @@
       </TableView>
       <JFXTextField fx:id="tfWeb" layoutX="50.0" layoutY="56.0" onAction="#borrarWeb" prefHeight="25.0" prefWidth="140.0" promptText="url" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="110.0" />
       <JFXButton fx:id="btnBorrar" layoutX="50.0" layoutY="312.0" ripplerFill="RED" style="-fx-background-color: ffebee;" text="Borrar" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-      <JFXButton fx:id="btnNavegar" layoutX="196.0" layoutY="50.0" onAction="#navegar" prefHeight="37.0" prefWidth="54.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="50.0">
+      <JFXButton fx:id="btnNavegar" contentDisplay="CENTER" layoutX="208.0" layoutY="50.0" onAction="#navegar" prefHeight="38.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="50.0">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
