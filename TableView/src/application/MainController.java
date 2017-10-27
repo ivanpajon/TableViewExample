@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class MainController implements Initializable {
 	
@@ -92,6 +93,12 @@ public class MainController implements Initializable {
 		catch (IOException e) {
 			System.out.println(e);
 		}
+    }
+	
+	@FXML
+    void seleccionarWeb(MouseEvent event) {
+		Web w = table.getSelectionModel().getSelectedItem();
+		tfWeb.setText(w.getNombre());
     }
 
 	private ObservableList<Web> getWebs() {
