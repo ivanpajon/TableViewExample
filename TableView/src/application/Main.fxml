@@ -8,8 +8,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" onDragDetected="#handle" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
+      <AnchorPane fx:id="toolbarPane" onMouseDragged="#moveDragged" onMousePressed="#movePressed" prefHeight="38.0" prefWidth="300.0">
+         <children>
+            <JFXButton fx:id="btnClose" contentDisplay="CENTER" onAction="#cerrarVentana" prefHeight="6.0" prefWidth="33.0" text=" " AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../close_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
       <TableView fx:id="table" layoutX="50.0" layoutY="100.0" onMouseClicked="#seleccionarWeb" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
         <columns>
           <TableColumn fx:id="columnWeb" prefWidth="198.0" text="Webs" />
@@ -22,15 +35,6 @@
             <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../search_icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="btnClose" contentDisplay="CENTER" layoutX="264.0" onAction="#cerrarVentana" prefHeight="6.0" prefWidth="33.0" text=" " AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../close_icon.png" />
                </image>
             </ImageView>
          </graphic>

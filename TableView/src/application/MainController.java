@@ -23,10 +23,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 	
 	@FXML private AnchorPane anchorPane;
+	
+	@FXML private AnchorPane toolbarPane;
 	
 	@FXML private TableView<Web> table;
 
@@ -41,6 +44,10 @@ public class MainController implements Initializable {
     @FXML private Button btnClose;
     
     private ObservableList<Web> webs = FXCollections.observableArrayList();
+    
+    private double initX,initY,initHeight,initWidth;
+    
+    private boolean maximized = false;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -155,7 +162,7 @@ public class MainController implements Initializable {
     }
 	
 	@FXML
-    void seleccionarWeb(MouseEvent event) {
+    void seleccionarWeb(MouseEvent e) {
 		if (!tfWeb.getText().equals("")) {
 			Web w = table.getSelectionModel().getSelectedItem();
 			tfWeb.setText(w.getNombre());
@@ -163,15 +170,20 @@ public class MainController implements Initializable {
     }
 	
 	@FXML
-    void cerrarVentana(ActionEvent event) {
+    void cerrarVentana(ActionEvent e) {
 		System.exit(0);
     }
 	
-	@FXML
-    void handle(MouseEvent event) {
-		//main.primaryStage.setX(event.getScreenX());
-        //main.primaryStage.setY(event.getScreenY());
+	@FXML void movePressed(MouseEvent e) {
+        initX= e.getSceneX();
+        initY = e.getSceneY();
     }
+	
+	@FXML void moveDragged(MouseEvent e) {
+		Stage stage = (Stage)toolbarPane.getScene().getWindow();
+        stage.setX(e.getScreenX()-initX);
+        stage.setY(e.getScreenY()-initY);
+	}
 
 	private ObservableList<Web> getWebs() {
 		return webs;
