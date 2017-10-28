@@ -78,18 +78,18 @@ public class MainController implements Initializable {
 	
 	@FXML void borrarWeb(ActionEvent event) {
 		Web w = table.getSelectionModel().getSelectedItem();
-		table.getItems().remove(w);
-		webs.remove(table.getSelectionModel().getFocusedIndex());
+		table.getItems().remove(w);  // Eliminamos la web seleccionada del array ObservableList y de la tabla
 		
 		File f = new File("webs.txt");
 		
 	    try {
 	    	// Sobreescribimos el archivo para vaciarlo
 	    	FileWriter fw = new FileWriter(f, false);
-			fw.write("");
-			fw.close();
 			
-			for (Web web : webs) {guardarWeb(web);}  // Guardamos las webs resultantes en el archivo de texto vacio
+			for (Web web : webs) {
+				fw.write(web.getNombre()+"\n");  // Escribimos las webs restantes en el archivo sobreescribiendolo
+			}
+			fw.close();
 		}
 	    catch (IOException e) {
 			System.out.println(e);
