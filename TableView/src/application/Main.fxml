@@ -10,13 +10,22 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <AnchorPane fx:id="toolbarPane" onMouseDragged="#moveDragged" onMousePressed="#movePressed" prefHeight="38.0" prefWidth="300.0">
+      <AnchorPane fx:id="toolbarPane" onMouseDragged="#moveDragged" onMousePressed="#movePressed" prefHeight="38.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <JFXButton fx:id="btnClose" contentDisplay="CENTER" onAction="#cerrarVentana" prefHeight="6.0" prefWidth="33.0" text=" " AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
                <graphic>
                   <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../close_icon.png" />
+                        <Image url="@images/close_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnMaximize" alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="5.0" onAction="#maximizarVentana" text=" " AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="4.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/maximize_icon.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -28,13 +37,13 @@
           <TableColumn fx:id="columnWeb" prefWidth="198.0" text="Webs" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="tfWeb" layoutX="50.0" layoutY="56.0" prefHeight="25.0" prefWidth="140.0" promptText="url" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="110.0" />
-      <JFXButton fx:id="btnBorrar" layoutX="50.0" layoutY="312.0" onAction="#borrarWeb" ripplerFill="RED" style="-fx-background-color: FF9E9E;" text="Borrar" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-      <JFXButton fx:id="btnNavegar" contentDisplay="CENTER" layoutX="208.0" layoutY="50.0" onAction="#navegar" prefHeight="38.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="50.0">
+      <JFXTextField fx:id="tfWeb" layoutX="50.0" layoutY="56.0" prefHeight="25.0" prefWidth="140.0" promptText="url" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" />
+      <JFXButton fx:id="btnBorrar" layoutX="50.0" layoutY="312.0" onAction="#borrarWeb" ripplerFill="RED" style="-fx-background-color: FF9E9E;" text="Borrar" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+      <JFXButton fx:id="btnNavegar" contentDisplay="CENTER" layoutX="208.0" layoutY="50.0" onAction="#navegar" prefHeight="38.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="50.0">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../search_icon.png" />
+                  <Image url="@images/search_icon.png" />
                </image>
             </ImageView>
          </graphic>
