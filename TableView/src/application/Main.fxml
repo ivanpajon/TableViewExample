@@ -23,7 +23,7 @@
             </JFXButton>
             <JFXButton fx:id="btnMaximize" alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="5.0" onAction="#maximizarVentana" text=" " AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="4.0">
                <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgMaximize" fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/maximize_icon.png" />
                      </image>
