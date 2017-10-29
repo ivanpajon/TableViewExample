@@ -176,12 +176,12 @@ public class MainController implements Initializable {
 		
         if (!maximized) {  // Si no esta maximizada, se maximiza
             stage.setMaximized(true);  // Se maximiza la ventana
-            imgMaximize.setImage(new Image(getClass().getResource("images/minimize_icon.png").toExternalForm()));  // Se cambia el icono de maximizar por el de minimizar
+            imgMaximize.setImage(new Image(getClass().getResource("images/minimizeSize_icon.png").toExternalForm()));  // Se cambia el icono de maximizar por el de minimizar
             maximized = true;
         }
         else {  // Si esta maximizada, se minimiza
             stage.setMaximized(false);  // Se minimiza la ventana
-            imgMaximize.setImage(new Image(getClass().getResource("images/maximize_icon.png").toExternalForm()));  // Se cambia el icono de minimizar por el de maximizar
+            imgMaximize.setImage(new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm()));  // Se cambia el icono de minimizar por el de maximizar
             maximized = false;
         }
     }
