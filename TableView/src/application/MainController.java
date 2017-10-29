@@ -222,11 +222,12 @@ public class MainController implements Initializable {
     }
     
     //  Se hace e.getScreenY()-initY para calcular el height a partir de la posicion actual del mouse
-    @FXML
-    private void resizeDownDragged(MouseEvent e){
+    @FXML void resizeDownDragged(MouseEvent e){
         Stage stage = (Stage)down.getScene().getWindow();
-        stage.setHeight(e.getScreenY()-initY);
+        stage.setHeight(e.getScreenY()-initY);  // Se establece el height agrandando la ventana hacia abajo, por eso no necesita setY()
     }
+    
+    
     
 	private ObservableList<Web> getWebs() {
 		return webs;
