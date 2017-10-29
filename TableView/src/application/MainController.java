@@ -21,27 +21,25 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 	
-	@FXML private AnchorPane anchorPane;
-	
-	@FXML private AnchorPane toolbarPane;
+	@FXML private AnchorPane anchorPane, toolbarPane;
 	
 	@FXML private TableView<Web> table;
 
     @FXML private TableColumn<Web, String> columnWeb;
     
-    @FXML private Button btnBorrar;
-    
-    @FXML private Button btnNavegar;
+    @FXML private Button btnBorrar, btnNavegar, btnClose, btnMaximize;
     
     @FXML private TextField tfWeb;
     
-    @FXML private Button btnClose;
+    @FXML private ImageView imgMaximize;
     
     private ObservableList<Web> webs = FXCollections.observableArrayList();
     
@@ -129,7 +127,7 @@ public class MainController implements Initializable {
 		}
 	}
 
-	@FXML void navegar(ActionEvent event) {
+	@FXML void navegar(ActionEvent e) {
 		// Subproceso
 		Runtime r = Runtime.getRuntime();
 		Process p = null;
@@ -150,13 +148,13 @@ public class MainController implements Initializable {
 				}
 			}
 		}
-		catch (IOException e) {
-			System.out.println(e);
+		catch (IOException e1) {
+			System.out.println(e1);
 		}
-		catch (NullPointerException e) {
+		catch (NullPointerException e1) {
 			System.out.println("No se ha seleccionado nada");
 		}
-		catch (RuntimeException e) {
+		catch (RuntimeException e1) {
 			System.out.println("Error runtime");
 		}
     }
@@ -172,6 +170,22 @@ public class MainController implements Initializable {
 	@FXML
     void cerrarVentana(ActionEvent e) {
 		System.exit(0);
+    }
+	
+	// TODO: Use relative path string in setsImage() instead of getClass().getResource()
+	@FXML void maximizarVentana(ActionEvent e) throws IOException {
+		Stage stage = (Stage) btnMaximize.getScene().getWindow();
+		
+        if (!maximized) {  // Si no esta maximizada, se maximiza
+            stage.setMaximized(true);  // Se maximiza la ventana
+            imgMaximize.setImage(new Image(getClass().getResource("images/minimize_icon.png").toExternalForm()));  // Se cambia el icono de maximizar por el de minimizar
+            maximized = true;
+        }
+        else {  // Si esta maximizada, se minimiza
+            stage.setMaximized(false);  // Se minimiza la ventana
+            imgMaximize.setImage(new Image(getClass().getResource("images/maximize_icon.png").toExternalForm()));  // Se cambia el icono de minimizar por el de maximizar
+            maximized = false;
+        }
     }
 	
 	@FXML void movePressed(MouseEvent e) {
