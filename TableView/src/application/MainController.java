@@ -35,7 +35,7 @@ public class MainController implements Initializable {
 
     @FXML private TableColumn<Web, String> columnWeb;
     
-    @FXML private Button btnBorrar, btnNavegar, btnClose, btnMaximize;
+    @FXML private Button btnBorrar, btnNavegar, btnClose, btnMaximize, btnMinimize;
     
     @FXML private TextField tfWeb;
     
@@ -184,6 +184,11 @@ public class MainController implements Initializable {
             imgMaximize.setImage(new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm()));  // Se cambia el icono de minimizar por el de maximizar
             maximized = false;
         }
+    }
+	
+	@FXML void minimizarVentana(ActionEvent e) {
+		Stage stage = (Stage) btnMinimize.getScene().getWindow();
+        stage.setIconified(true);
     }
 	
 	@FXML void movePressed(MouseEvent e) {

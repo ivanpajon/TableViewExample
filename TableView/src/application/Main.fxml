@@ -30,6 +30,15 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton fx:id="btnMinimize" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" onAction="#minimizarVentana" text=" " AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/minimizeWindow_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
       <TableView fx:id="table" layoutX="50.0" layoutY="100.0" onMouseClicked="#seleccionarWeb" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
