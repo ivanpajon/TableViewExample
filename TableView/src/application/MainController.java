@@ -161,10 +161,8 @@ public class MainController implements Initializable {
 	
 	@FXML
     void seleccionarWeb(MouseEvent e) {
-		if (!tfWeb.getText().equals("")) {
-			Web w = table.getSelectionModel().getSelectedItem();
-			tfWeb.setText(w.getNombre());
-		}
+		Web w = table.getSelectionModel().getSelectedItem();
+		tfWeb.setText(w.getNombre());
     }
 	
 	@FXML
