@@ -159,15 +159,15 @@ public class MainController implements Initializable {
 		}
     }
 	
-	@FXML
-    void seleccionarWeb(MouseEvent e) {
+	@FXML void seleccionarWeb(MouseEvent e) {
 		Web w = table.getSelectionModel().getSelectedItem();
 		tfWeb.setText(w.getNombre());
     }
 	
-	@FXML
-    void cerrarVentana(ActionEvent e) {
-		System.exit(0);
+	@FXML void cerrarVentana(ActionEvent e) {
+		Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+		//System.exit(0);  // Se fuerza a la aplicacion a cerrarse, usar como ultimo recurso
     }
 	
 	// TODO: Use relative path string in setsImage() instead of getClass().getResource()
