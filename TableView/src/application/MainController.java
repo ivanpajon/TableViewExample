@@ -25,11 +25,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 	
 	@FXML private AnchorPane anchorPane, toolbarPane;
+	
+	@FXML private Pane up, right, down, left;
 	
 	@FXML private TableView<Web> table;
 
@@ -170,7 +173,7 @@ public class MainController implements Initializable {
 		//System.exit(0);  // Se fuerza a la aplicacion a cerrarse, usar como ultimo recurso
     }
 	
-	// TODO: Use relative path string in setsImage() instead of getClass().getResource()
+	// TODO: Use relative path string in setImage() instead of getClass().getResource()
 	@FXML void maximizarVentana(ActionEvent e) throws IOException {
 		Stage stage = (Stage) btnMaximize.getScene().getWindow();
 		
@@ -201,7 +204,30 @@ public class MainController implements Initializable {
         stage.setX(e.getScreenX()-initX);
         stage.setY(e.getScreenY()-initY);
 	}
-
+	
+	@FXML void resizeVerticalPressed(MouseEvent evt){
+        Stage stage = (Stage)up.getScene().getWindow();  // Se obtiene el stage de la ventana actual
+        initY = stage.getY();  // Se obtiene el punto del borde superior de la ventana con respecto a la pantalla
+        initHeight = stage.getHeight();  // Se obtiene el height de la ventana
+    }
+    
+    /* 
+     * Se hace e.getScreenY()-initY para calcular la diferencia entre el punto inicial al actual
+     * Se le resta initHeight a (e.getScreenY()-initY) para obtener el nuevo height de la ventana
+     */
+    @FXML void resizeUpDragged(MouseEvent e){
+        Stage stage = (Stage)up.getScene().getWindow();
+        stage.setHeight(initHeight-(e.getScreenY()-initY));  // Se le asigna el nuevo height a la ventana
+        stage.setY(e.getScreenY());  // Se mueve la ventana junto con el mouse a la vez que se le asigna el nuevo height
+    }
+    
+    //  Se hace e.getScreenY()-initY para calcular el height a partir de la posicion actual del mouse
+    @FXML
+    private void resizeDownDragged(MouseEvent e){
+        Stage stage = (Stage)down.getScene().getWindow();
+        stage.setHeight(e.getScreenY()-initY);
+    }
+    
 	private ObservableList<Web> getWebs() {
 		return webs;
 	}
