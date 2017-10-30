@@ -180,29 +180,64 @@ public class MainController implements Initializable {
         if (!maximized) {  // Si no esta maximizada, se maximiza
             stage.setMaximized(true);  // Se maximiza la ventana
             imgMaximize.setImage(new Image(getClass().getResource("images/minimizeSize_icon.png").toExternalForm()));  // Se cambia el icono de maximizar por el de minimizar
+            disableResize();  // Se deshabilita el resize cuando se maximiza la ventana
             maximized = true;
         }
         else {  // Si esta maximizada, se minimiza
             stage.setMaximized(false);  // Se minimiza la ventana
             imgMaximize.setImage(new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm()));  // Se cambia el icono de minimizar por el de maximizar
+            enableResize();  // Se habilita el resize cuando se minimiza la ventana
             maximized = false;
         }
     }
 	
+	private void enableResize() {
+		// Vertical y horizontal
+		up.setVisible(true);
+		right.setVisible(true);
+		down.setVisible(true);
+		left.setVisible(true);
+		
+		// Corners
+		upLeft.setVisible(true);
+		upRight.setVisible(true);
+		downRight.setVisible(true);
+		downLeft.setVisible(true);
+	}
+	
+	private void disableResize() {
+		// Vertical y horizontal
+		up.setVisible(false);
+		right.setVisible(false);
+		down.setVisible(false);
+		left.setVisible(false);
+		
+		// Corners
+		upLeft.setVisible(false);
+		upRight.setVisible(false);
+		downRight.setVisible(false);
+		downLeft.setVisible(false);
+	}
+	
 	@FXML private void minimizarVentana(ActionEvent e) {
 		Stage stage = (Stage) btnMinimize.getScene().getWindow();
-        stage.setIconified(true);
+        stage.setIconified(true);  // Se minimiza la ventana a la barra de herramientas
     }
 	
 	@FXML private void movePressed(MouseEvent e) {
-        initX= e.getSceneX();
-        initY = e.getSceneY();
+		if (!maximized) {  // Solo permitimos mover la ventana cuando no esta maximizada
+		    initX= e.getSceneX();
+		    initY = e.getSceneY();
+		}
     }
 	
+	// Funcion que permite mover la ventana
 	@FXML private void moveDragged(MouseEvent e) {
-		Stage stage = (Stage) toolbarPane.getScene().getWindow();
-        stage.setX(e.getScreenX()-initX);
-        stage.setY(e.getScreenY()-initY);
+		if (!maximized) {  // Solo permitimos mover la ventana cuando no esta maximizada
+			Stage stage = (Stage) toolbarPane.getScene().getWindow();
+	        stage.setX(e.getScreenX()-initX);
+	        stage.setY(e.getScreenY()-initY);
+		}
 	}
 	
 	@FXML private void resizeVerticalPressed(MouseEvent e) {
