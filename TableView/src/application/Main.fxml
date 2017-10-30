@@ -68,12 +68,18 @@
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Pane>
-      <Pane fx:id="right" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane fx:id="right" onMouseDragged="#resizeRightDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="H_RESIZE" />
+         </cursor></Pane>
       <Pane fx:id="down" onMouseDragged="#resizeDownDragged" onMousePressed="#resizeVerticalPressed" prefHeight="5.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <cursor>
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Pane>
-      <Pane fx:id="left" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane fx:id="left" onMouseDragged="#resizeLeftDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="H_RESIZE" />
+         </cursor></Pane>
    </children>
 </AnchorPane>
