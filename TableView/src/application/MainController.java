@@ -31,7 +31,7 @@ public class MainController implements Initializable {
 	
 	@FXML private AnchorPane anchorPane, toolbarPane;
 	
-	@FXML private Pane up, right, down, left;
+	@FXML private Pane up, right, down, left, upLeft, upRight, downRight, downLeft;
 	
 	@FXML private TableView<Web> table;
 
@@ -207,8 +207,8 @@ public class MainController implements Initializable {
 	
 	@FXML private void resizeVerticalPressed(MouseEvent e) {
         Stage stage = (Stage) up.getScene().getWindow();  // Se obtiene el stage de la ventana actual
-        initY = stage.getY();  // Se obtiene el punto del borde superior de la ventana con respecto a la pantalla
         initHeight = stage.getHeight();  // Se obtiene el height de la ventana
+        initY = stage.getY();  // Se obtiene el punto del borde superior de la ventana con respecto a la pantalla
     }
     
     /* 
@@ -247,6 +247,52 @@ public class MainController implements Initializable {
     @FXML private void resizeRightDragged(MouseEvent e) {
         Stage stage =(Stage) right.getScene().getWindow();
         stage.setWidth(e.getScreenX()-initX);  // Se establece el width agrandando la ventana hacia la derecha, por ello no necesita setX()
+    }
+    
+    // Funcion que sirve para el resize de todos los corners dela aplicacion
+    @FXML private void resizeCornerPressed(MouseEvent e) {
+    	Stage stage = (Stage) up.getScene().getWindow();  // Se obtiene el stage de la ventana actual
+        initHeight = stage.getHeight();  // Se obtiene el height de la ventana
+        initY = stage.getY();  // Se obtiene el punto del borde superior de la ventana con respecto a la pantalla
+        
+        initWidth = stage.getWidth();  // Se obtiene el width de la ventana
+        initX = stage.getX();  // Se obtiene el punto del borde izquierdo con respecto a la pantalla
+    }
+    
+    // Funcion para hacer resize desde el corner superior izquierdo
+    @FXML private void resizeUpLeftDragged(MouseEvent e) {
+    	Stage stage = (Stage)left.getScene().getWindow();
+    	stage.setHeight(initHeight-(e.getScreenY()-initY));  // Se le asigna el nuevo height a la ventana
+        stage.setY(e.getScreenY());  // Se mueve la ventana junto con el mouse a la vez que se le asigna el nuevo height
+        
+        stage.setWidth(initWidth+(initX-e.getScreenX()));
+        stage.setX(e.getScreenX());  // Se mueve la ventana junto con el mouse a la vez que se le asigna el nuevo width
+    }
+    
+    // Funcion para hacer resize desde el corner superior derecho
+    @FXML private void resizeUpRightDragged(MouseEvent e) {
+    	Stage stage = (Stage)left.getScene().getWindow();
+    	stage.setHeight(initHeight-(e.getScreenY()-initY));  // Se le asigna el nuevo height a la ventana
+        stage.setY(e.getScreenY());  // Se mueve la ventana junto con el mouse a la vez que se le asigna el nuevo height
+        
+        stage.setWidth(e.getScreenX()-initX);  // Se establece el width agrandando la ventana hacia la derecha, por ello no necesita setX()
+    }
+    
+    // Funcion para hacer resize desde el corner inferior derecho
+    @FXML private void resizeDownRightDragged(MouseEvent e) {
+    	Stage stage = (Stage) down.getScene().getWindow();
+        stage.setHeight(e.getScreenY()-initY);  // Se establece el height agrandando la ventana hacia abajo, por ello no necesita setY()
+        
+        stage.setWidth(e.getScreenX()-initX);  // Se establece el width agrandando la ventana hacia la derecha, por ello no necesita setX()
+    }
+    
+    // Funcion para hacer resize desde el corner inferior izquierdo
+    @FXML private void resizeDownLeftDragged(MouseEvent e) {
+    	Stage stage = (Stage) down.getScene().getWindow();
+        stage.setHeight(e.getScreenY()-initY);  // Se establece el height agrandando la ventana hacia abajo, por ello no necesita setY()
+        
+        stage.setWidth(initWidth+(initX-e.getScreenX()));
+        stage.setX(e.getScreenX());  // Se mueve la ventana junto con el mouse a la vez que se le asigna el nuevo width
     }
     
 	private ObservableList<Web> getWebs() {

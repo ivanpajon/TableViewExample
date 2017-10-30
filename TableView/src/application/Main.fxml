@@ -81,5 +81,25 @@
          <cursor>
             <Cursor fx:constant="H_RESIZE" />
          </cursor></Pane>
+      <Pane fx:id="upLeft" onMouseDragged="#resizeUpLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="NW_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="upRight" onMouseDragged="#resizeUpRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="NE_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="downRight" onMouseDragged="#resizeDownRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="SE_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="downLeft" onMouseDragged="#resizeDownLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="SW_RESIZE" />
+         </cursor>
+      </Pane>
    </children>
 </AnchorPane>
