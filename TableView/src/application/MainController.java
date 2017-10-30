@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -85,7 +84,7 @@ public class MainController implements Initializable {
 		}
 	}
 	
-	@FXML void borrarWeb(ActionEvent e) {
+	@FXML private void borrarWeb(ActionEvent e) {
 		Web w = table.getSelectionModel().getSelectedItem();
 		table.getItems().remove(w);  // Eliminamos la web seleccionada del array ObservableList y de la tabla
 		
@@ -131,7 +130,7 @@ public class MainController implements Initializable {
 		}
 	}
 
-	@FXML void navegar(ActionEvent e) {
+	@FXML private void navegar(ActionEvent e) {
 		// Subproceso
 		Runtime r = Runtime.getRuntime();
 		Process p = null;
@@ -163,19 +162,19 @@ public class MainController implements Initializable {
 		}
     }
 	
-	@FXML void seleccionarWeb(MouseEvent e) {
+	@FXML private void seleccionarWeb(MouseEvent e) {
 		Web w = table.getSelectionModel().getSelectedItem();
 		tfWeb.setText(w.getNombre());
     }
 	
-	@FXML void cerrarVentana(ActionEvent e) {
+	@FXML private void cerrarVentana(ActionEvent e) {
 		Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
 		//System.exit(0);  // Se fuerza a la aplicacion a cerrarse, usar como ultimo recurso
     }
 	
 	// TODO: Use relative path string in setImage() instead of getClass().getResource()
-	@FXML void maximizarVentana(ActionEvent e) {
+	@FXML private void maximizarVentana(ActionEvent e) {
 		Stage stage = (Stage) btnMaximize.getScene().getWindow();
 		
         if (!maximized) {  // Si no esta maximizada, se maximiza
@@ -190,23 +189,23 @@ public class MainController implements Initializable {
         }
     }
 	
-	@FXML void minimizarVentana(ActionEvent e) {
+	@FXML private void minimizarVentana(ActionEvent e) {
 		Stage stage = (Stage) btnMinimize.getScene().getWindow();
         stage.setIconified(true);
     }
 	
-	@FXML void movePressed(MouseEvent e) {
+	@FXML private void movePressed(MouseEvent e) {
         initX= e.getSceneX();
         initY = e.getSceneY();
     }
 	
-	@FXML void moveDragged(MouseEvent e) {
+	@FXML private void moveDragged(MouseEvent e) {
 		Stage stage = (Stage) toolbarPane.getScene().getWindow();
         stage.setX(e.getScreenX()-initX);
         stage.setY(e.getScreenY()-initY);
 	}
 	
-	@FXML void resizeVerticalPressed(MouseEvent e) {
+	@FXML private void resizeVerticalPressed(MouseEvent e) {
         Stage stage = (Stage) up.getScene().getWindow();  // Se obtiene el stage de la ventana actual
         initY = stage.getY();  // Se obtiene el punto del borde superior de la ventana con respecto a la pantalla
         initHeight = stage.getHeight();  // Se obtiene el height de la ventana
@@ -216,19 +215,19 @@ public class MainController implements Initializable {
      * Se hace e.getScreenY()-initY para calcular la diferencia entre el punto inicial al actual
      * Se le resta initHeight a (e.getScreenY()-initY) para obtener el nuevo height de la ventana
      */
-    @FXML void resizeUpDragged(MouseEvent e) {
+    @FXML private void resizeUpDragged(MouseEvent e) {
         Stage stage = (Stage) up.getScene().getWindow();
         stage.setHeight(initHeight-(e.getScreenY()-initY));  // Se le asigna el nuevo height a la ventana
         stage.setY(e.getScreenY());  // Se mueve la ventana junto con el mouse a la vez que se le asigna el nuevo height
     }
     
     //  Se hace e.getScreenY()-initY para calcular el height a partir de la posicion actual del mouse
-    @FXML void resizeDownDragged(MouseEvent e) {
+    @FXML private void resizeDownDragged(MouseEvent e) {
         Stage stage = (Stage) down.getScene().getWindow();
-        stage.setHeight(e.getScreenY()-initY);  // Se establece el height agrandando la ventana hacia abajo, por eso no necesita setY()
+        stage.setHeight(e.getScreenY()-initY);  // Se establece el height agrandando la ventana hacia abajo, por ello no necesita setY()
     }
     
-    @FXML void resizeHorizontalPressed(MouseEvent e) {
+    @FXML private void resizeHorizontalPressed(MouseEvent e) {
         Stage stage = (Stage) left.getScene().getWindow();  // Se obtiene el stage de la ventana actual
         initWidth = stage.getWidth();  // Se obtiene el width de la ventana
         initX = stage.getX();  // Se obtiene el punto del borde izquierdo con respecto a la pantalla
@@ -238,15 +237,16 @@ public class MainController implements Initializable {
      * Se hace initX-e.getScreenX() para calcular la diferencia entre el punto inicial al actual
      * Se le suma initWidth a (initX-e.getScreenX()) para obtener el nuevo width de la ventana
      */
-    @FXML void resizeLeftDragged(MouseEvent e) {
+    @FXML private void resizeLeftDragged(MouseEvent e) {
         Stage stage = (Stage)left.getScene().getWindow();
         stage.setWidth(initWidth+(initX-e.getScreenX()));
         stage.setX(e.getScreenX());  // Se mueve la ventana junto con el mouse a la vez que se le asigna el nuevo width
     }
     
-    @FXML void resizeRightDragged(MouseEvent e) {
+    // Se hace e.getScreenX()-initX para calcular el width  a partir de la posicion actual del mouse
+    @FXML private void resizeRightDragged(MouseEvent e) {
         Stage stage =(Stage) right.getScene().getWindow();
-        stage.setWidth(e.getScreenX()-initX);
+        stage.setWidth(e.getScreenX()-initX);  // Se establece el width agrandando la ventana hacia la derecha, por ello no necesita setX()
     }
     
 	private ObservableList<Web> getWebs() {
