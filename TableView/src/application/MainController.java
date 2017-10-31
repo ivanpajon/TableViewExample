@@ -49,8 +49,9 @@ public class MainController implements Initializable {
     
     private boolean maximized = false;
     
+    // TODO: Use relative path string in setImage() instead of getClass().getResource()
     private Image minimizeIcon = new Image(getClass().getResource("images/minimizeSize_icon.png").toExternalForm());
-    
+    // TODO: Use relative path string in setImage() instead of getClass().getResource()
     private Image maximizeIcon = new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm());
 
 	@Override
@@ -177,7 +178,6 @@ public class MainController implements Initializable {
 		//System.exit(0);  // Se fuerza a la aplicacion a cerrarse, usar como ultimo recurso
     }
 	
-	// TODO: Use relative path string in setImage() instead of getClass().getResource()
 	@FXML private void maximizarVentana(ActionEvent e) {
 		Stage stage = (Stage) btnMaximize.getScene().getWindow();
 		
@@ -250,6 +250,18 @@ public class MainController implements Initializable {
 	        enableResize();
 	        imgMaximize.setImage(maximizeIcon);  // Se cambia el icono de minimizar por el de maximizar
 	        maximized = false;
+		}
+	}
+	
+	// Funcion que maximiza la ventana cuando se arrastra y se suelta cerca del borde superior
+	@FXML private void moveReleased(MouseEvent e) {
+		Stage stage = (Stage) toolbarPane.getScene().getWindow();
+		
+		if (e.getScreenY() < 10) {
+			stage.setMaximized(true);  // Se maximiza la ventana
+            imgMaximize.setImage(minimizeIcon);  // Se cambia el icono de maximizar por el de minimizar
+            disableResize();  // Se deshabilita el resize cuando se maximiza la ventana
+            maximized = true;
 		}
 	}
 	
