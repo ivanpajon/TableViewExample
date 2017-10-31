@@ -48,6 +48,10 @@ public class MainController implements Initializable {
     private double initX,initY,initHeight,initWidth;
     
     private boolean maximized = false;
+    
+    private Image minimizeIcon = new Image(getClass().getResource("images/minimizeSize_icon.png").toExternalForm());
+    
+    private Image maximizeIcon = new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm());
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -179,13 +183,13 @@ public class MainController implements Initializable {
 		
         if (!maximized) {  // Si no esta maximizada, se maximiza
             stage.setMaximized(true);  // Se maximiza la ventana
-            imgMaximize.setImage(new Image(getClass().getResource("images/minimizeSize_icon.png").toExternalForm()));  // Se cambia el icono de maximizar por el de minimizar
+            imgMaximize.setImage(minimizeIcon);  // Se cambia el icono de maximizar por el de minimizar
             disableResize();  // Se deshabilita el resize cuando se maximiza la ventana
             maximized = true;
         }
         else {  // Si esta maximizada, se minimiza
             stage.setMaximized(false);  // Se minimiza la ventana
-            imgMaximize.setImage(new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm()));  // Se cambia el icono de minimizar por el de maximizar
+            imgMaximize.setImage(maximizeIcon);  // Se cambia el icono de minimizar por el de maximizar
             enableResize();  // Se habilita el resize cuando se minimiza la ventana
             maximized = false;
         }
@@ -233,10 +237,19 @@ public class MainController implements Initializable {
 	
 	// Funcion que permite mover la ventana
 	@FXML private void moveDragged(MouseEvent e) {
+		Stage stage = (Stage) toolbarPane.getScene().getWindow();
+		
 		if (!maximized) {  // Solo permitimos mover la ventana cuando no esta maximizada
-			Stage stage = (Stage) toolbarPane.getScene().getWindow();
 	        stage.setX(e.getScreenX()-initX);
 	        stage.setY(e.getScreenY()-initY);
+		}
+		else {  // Si esta maximizada y se arrastra, se minimiza y se mueve conforme al raton
+			stage.setMaximized(false);
+			stage.setX(e.getScreenX()-initX);
+	        stage.setY(e.getScreenY()-initY);
+	        enableResize();
+	        imgMaximize.setImage(maximizeIcon);  // Se cambia el icono de minimizar por el de maximizar
+	        maximized = false;
 		}
 	}
 	
