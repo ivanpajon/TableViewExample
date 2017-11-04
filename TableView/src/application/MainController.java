@@ -48,6 +48,11 @@ public class MainController implements Initializable {
     private double initX,initY,initHeight,initWidth;
     
     private boolean maximized = false;
+    
+    // TODO: Use relative path string in setImage() instead of getClass().getResource()
+    private Image minimizeIcon = new Image(getClass().getResource("images/minimizeSize_icon.png").toExternalForm());
+    // TODO: Use relative path string in setImage() instead of getClass().getResource()
+    private Image maximizeIcon = new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm());
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -173,19 +178,18 @@ public class MainController implements Initializable {
 		//System.exit(0);  // Se fuerza a la aplicacion a cerrarse, usar como ultimo recurso
     }
 	
-	// TODO: Use relative path string in setImage() instead of getClass().getResource()
 	@FXML private void maximizarVentana(ActionEvent e) {
 		Stage stage = (Stage) btnMaximize.getScene().getWindow();
 		
         if (!maximized) {  // Si no esta maximizada, se maximiza
             stage.setMaximized(true);  // Se maximiza la ventana
-            imgMaximize.setImage(new Image(getClass().getResource("images/minimizeSize_icon.png").toExternalForm()));  // Se cambia el icono de maximizar por el de minimizar
+            imgMaximize.setImage(minimizeIcon);  // Se cambia el icono de maximizar por el de minimizar
             disableResize();  // Se deshabilita el resize cuando se maximiza la ventana
             maximized = true;
         }
         else {  // Si esta maximizada, se minimiza
             stage.setMaximized(false);  // Se minimiza la ventana
-            imgMaximize.setImage(new Image(getClass().getResource("images/maximizeSize_icon.png").toExternalForm()));  // Se cambia el icono de minimizar por el de maximizar
+            imgMaximize.setImage(maximizeIcon);  // Se cambia el icono de minimizar por el de maximizar
             enableResize();  // Se habilita el resize cuando se minimiza la ventana
             maximized = false;
         }
@@ -233,10 +237,31 @@ public class MainController implements Initializable {
 	
 	// Funcion que permite mover la ventana
 	@FXML private void moveDragged(MouseEvent e) {
+		Stage stage = (Stage) toolbarPane.getScene().getWindow();
+		
 		if (!maximized) {  // Solo permitimos mover la ventana cuando no esta maximizada
-			Stage stage = (Stage) toolbarPane.getScene().getWindow();
 	        stage.setX(e.getScreenX()-initX);
 	        stage.setY(e.getScreenY()-initY);
+		}
+		else {  // Si esta maximizada y se arrastra, se minimiza y se mueve conforme al raton
+			stage.setMaximized(false);
+			stage.setX(e.getScreenX()-initX);
+	        stage.setY(e.getScreenY()-initY);
+	        enableResize();
+	        imgMaximize.setImage(maximizeIcon);  // Se cambia el icono de minimizar por el de maximizar
+	        maximized = false;
+		}
+	}
+	
+	// Funcion que maximiza la ventana cuando se arrastra y se suelta cerca del borde superior
+	@FXML private void moveReleased(MouseEvent e) {
+		Stage stage = (Stage) toolbarPane.getScene().getWindow();
+		
+		if (e.getScreenY() < 10) {
+			stage.setMaximized(true);  // Se maximiza la ventana
+            imgMaximize.setImage(minimizeIcon);  // Se cambia el icono de maximizar por el de minimizar
+            disableResize();  // Se deshabilita el resize cuando se maximiza la ventana
+            maximized = true;
 		}
 	}
 	
