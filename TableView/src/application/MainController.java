@@ -230,7 +230,7 @@ public class MainController implements Initializable {
 	
 	@FXML private void movePressed(MouseEvent e) {
 		if (!maximized) {  // Solo permitimos mover la ventana cuando no esta maximizada
-		    initX= e.getSceneX();
+		    initX = e.getSceneX();
 		    initY = e.getSceneY();
 		}
     }
