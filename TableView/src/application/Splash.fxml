@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" onMouseDragged="#moveDragged" onMousePressed="#movePressed" prefHeight="150.0" prefWidth="500.0" style="-fx-background-color: #26A69A;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="application.SplashController">
+   <children>
+      <Label layoutX="157.0" layoutY="14.0" text="TableView Example" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <JFXSpinner fx:id="spinner" layoutX="226.0" layoutY="60.0" progress="0.0" />
+      <Label layoutX="197.0" layoutY="121.0" text="Cargando páginas web..." textFill="WHITE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
