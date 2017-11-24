@@ -10,22 +10,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane fx:id="root" prefHeight="450.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
          <children>
-            <JFXTextField fx:id="tfWeb" prefHeight="25.0" prefWidth="140.0" promptText="url" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
-            <TableView fx:id="table" onMouseClicked="#seleccionarWeb" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
+            <JFXTextField fx:id="tfWeb" prefHeight="25.0" prefWidth="140.0" promptText="url" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="30.0" />
+            <TableView fx:id="table" onMouseClicked="#seleccionarWeb" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
               <columns>
                 <TableColumn fx:id="columnWeb" prefWidth="198.0" text="Webs" />
               </columns>
             </TableView>
-            <JFXButton fx:id="btnBorrar" onAction="#borrarWeb" ripplerFill="RED" style="-fx-background-color: FF9E9E;" text="Borrar" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-            <JFXButton fx:id="btnNavegar" contentDisplay="CENTER" onAction="#navegar" prefHeight="38.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
+            <JFXButton fx:id="btnBorrar" alignment="CENTER" contentDisplay="CENTER" onAction="#borrarWeb" ripplerFill="RED" style="-fx-background-color: FFAFAF;" text="Borrar" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+            <JFXButton fx:id="btnNavegar" contentDisplay="CENTER" onAction="#navegar" prefHeight="38.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/search_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnWord" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="328.0" onAction="#word" ripplerFill="#2c79ff" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/word_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnExcel" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="328.0" onAction="#excel" ripplerFill="#30c635" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/excel_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnPowerPoint" alignment="CENTER" contentDisplay="CENTER" layoutX="204.0" layoutY="328.0" onAction="#powerpoint" ripplerFill="#ff6060" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/powerpoint_icon.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -63,63 +90,40 @@
             </JFXButton>
          </children>
       </AnchorPane>
-<<<<<<< HEAD
-=======
-      <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
-         <children>
-            <TableView fx:id="table" onMouseClicked="#seleccionarWeb" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
-              <columns>
-                <TableColumn fx:id="columnWeb" prefWidth="198.0" text="Webs" />
-              </columns>
-            </TableView>
-            <JFXTextField fx:id="tfWeb" prefHeight="25.0" prefWidth="140.0" promptText="url" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0" />
-            <JFXButton fx:id="btnBorrar" onAction="#borrarWeb" ripplerFill="RED" style="-fx-background-color: FF9E9E;" text="Borrar" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-            <JFXButton fx:id="btnNavegar" contentDisplay="CENTER" onAction="#navegar" prefHeight="38.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/search_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-         </children>
-      </AnchorPane>
->>>>>>> branch 'master' of https://github.com/ivanzhenlms/TableViewExample.git
-      <Pane fx:id="up" onMouseDragged="#resizeUpDragged" onMousePressed="#resizeVerticalPressed" prefHeight="5.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="paneUp" onMouseDragged="#resizeUpDragged" onMousePressed="#resizeVerticalPressed" prefHeight="5.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <cursor>
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Pane>
-      <Pane fx:id="right" onMouseDragged="#resizeRightDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="paneRight" onMouseDragged="#resizeRightDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <cursor>
             <Cursor fx:constant="H_RESIZE" />
          </cursor></Pane>
-      <Pane fx:id="down" onMouseDragged="#resizeDownDragged" onMousePressed="#resizeVerticalPressed" prefHeight="5.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Pane fx:id="paneDown" onMouseDragged="#resizeDownDragged" onMousePressed="#resizeVerticalPressed" prefHeight="5.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <cursor>
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Pane>
-      <Pane fx:id="left" onMouseDragged="#resizeLeftDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="paneLeft" onMouseDragged="#resizeLeftDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <cursor>
             <Cursor fx:constant="H_RESIZE" />
          </cursor></Pane>
-      <Pane fx:id="upLeft" onMouseDragged="#resizeUpLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="paneUpLeft" onMouseDragged="#resizeUpLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <cursor>
             <Cursor fx:constant="NW_RESIZE" />
          </cursor>
       </Pane>
-      <Pane fx:id="upRight" onMouseDragged="#resizeUpRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="paneUpRight" onMouseDragged="#resizeUpRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <cursor>
             <Cursor fx:constant="NE_RESIZE" />
          </cursor>
       </Pane>
-      <Pane fx:id="downRight" onMouseDragged="#resizeDownRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Pane fx:id="paneDownRight" onMouseDragged="#resizeDownRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <cursor>
             <Cursor fx:constant="SE_RESIZE" />
          </cursor>
       </Pane>
-      <Pane fx:id="downLeft" onMouseDragged="#resizeDownLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <Pane fx:id="paneDownLeft" onMouseDragged="#resizeDownLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <cursor>
             <Cursor fx:constant="SW_RESIZE" />
          </cursor>
