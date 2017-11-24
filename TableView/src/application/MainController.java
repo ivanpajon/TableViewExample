@@ -58,13 +58,6 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		FadeTransition ft = new FadeTransition();
-		ft.setDuration(Duration.millis(2000));
-		ft.setNode(root);
-		ft.setFromValue(0);
-		ft.setToValue(1);
-		ft.play();
-		
 		columnWeb.setCellValueFactory(new PropertyValueFactory<Web, String>("nombre"));
         cargarWebs();
         
@@ -73,6 +66,13 @@ public class MainController implements Initializable {
     	fxresize = new FXResize(root, paneUp, paneRight, paneDown, paneLeft, paneUpLeft, paneUpRight, paneDownRight, paneDownLeft);
     	
     	fxtoolbar = new FXToolbar(root, minimizeIcon, maximizeIcon);
+    	
+		FadeTransition ft = new FadeTransition();
+		ft.setDuration(Duration.millis(1000));
+		ft.setNode(root);
+		ft.setFromValue(0);
+		ft.setToValue(1);
+		ft.play();
 	}
 	
 	@FXML void word(ActionEvent e) {
