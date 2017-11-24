@@ -33,10 +33,11 @@ public class ManualController implements Initializable {
     
     @Override
 	public void initialize(URL url, ResourceBundle rb) {
-    	translateAnimation(0.5, pane2, 600);
-		translateAnimation(0.5, pane3, 600);
+    	translateAnimation(0.1, pane2, 600);
+		translateAnimation(0.1, pane3, 600);
 		
-		fxstage = new FXStage(root, "src/application/Main.fxml");
+		fxstage = new FXStage(root, "src/application/Splash.fxml");  // Se declara un stage con el root actual y el url del que se abrira
+		fxstage.setUndecorated(true);
 		
 		fxmove = new FXMove(root);
 		
@@ -48,12 +49,12 @@ public class ManualController implements Initializable {
     	if (showSlide == 0) {
     		btnPrevious.setDisable(false);
 			translateAnimation(0.5, pane2, -600);
-			showSlide++; // showSlide=1
+			showSlide++;
 			countLabel.setText("2/3");
 		}
     	else if (showSlide == 1) {
 			translateAnimation(0.5, pane3, -600);
-			showSlide++; // showSlide=2
+			showSlide++;
 			countLabel.setText("3/3");
 			btnNext.setText("x");
 		}
@@ -63,22 +64,22 @@ public class ManualController implements Initializable {
     		ft.setNode(root);
     		ft.setFromValue(1);
     		ft.setToValue(0);
-    		ft.setOnFinished(e1 -> fxstage.updateScene());
+    		ft.setOnFinished(e1 -> {fxstage.close();fxstage.open();});  // Se cierra el stage actual y se abre uno nuevo con el fxml que se le indico
     		ft.play();
 		}
     }
-
+    
     @FXML
     void previous(ActionEvent e) {
     	if (showSlide == 1) {
     		btnPrevious.setDisable(true);
 			translateAnimation(0.5, pane2, 600);
-			showSlide--; // showSlide=0
+			showSlide--;
 			countLabel.setText("1/3");
 		}
 		else if (showSlide == 2) {
 			translateAnimation(0.5, pane3, 600);
-			showSlide--; // showSlide=1
+			showSlide--;
 			countLabel.setText("2/3");
 			btnNext.setText(">");
 		}
