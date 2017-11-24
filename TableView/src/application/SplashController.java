@@ -2,6 +2,9 @@ package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 import com.jfoenix.controls.JFXSpinner;
 
 import fxwindow.fxmove.FXMove;
@@ -33,12 +36,11 @@ public class SplashController implements Initializable {
 		ft.setNode(root);
 		ft.setFromValue(0);
 		ft.setToValue(1);
-		ft.setOnFinished(e -> fadeOut());
+		ft.setOnFinished(e -> delay(5));  // Se establece un delay antes de abrir el siguiente stage automaticamente
 		ft.play();
 	}
     
     private void fadeOut() {
-    	delay(1000);
     	FadeTransition ft = new FadeTransition();
 		ft.setDuration(Duration.millis(2000));
 		ft.setNode(root);
@@ -56,12 +58,8 @@ public class SplashController implements Initializable {
     	fxmove.moveDragged(e);
     }
     
-    private void delay(long delay) {
-    	long lastTime = System.currentTimeMillis();
-    	long thisTime = 0;
-    	
-    	while ((thisTime - lastTime) < delay) {
-    		thisTime = System.currentTimeMillis();
-    	}
+    private void delay(int seconds) {
+    	ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
+    	exec.schedule(() -> fadeOut(), seconds, TimeUnit.SECONDS);  // Se establece que funcion debe ejecutarse y dentro de cuanto tiempo
     }
 }
