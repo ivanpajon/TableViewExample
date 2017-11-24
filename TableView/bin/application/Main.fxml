@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane fx:id="root" prefHeight="450.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+         <children>
+            <JFXTextField fx:id="tfWeb" prefHeight="25.0" prefWidth="140.0" promptText="url" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="30.0" />
+            <TableView fx:id="table" onMouseClicked="#seleccionarWeb" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+              <columns>
+                <TableColumn fx:id="columnWeb" prefWidth="198.0" text="Webs" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="btnBorrar" alignment="CENTER" contentDisplay="CENTER" onAction="#borrarWeb" ripplerFill="RED" style="-fx-background-color: FFAFAF;" text="Borrar" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+            <JFXButton fx:id="btnNavegar" contentDisplay="CENTER" onAction="#navegar" prefHeight="38.0" ripplerFill="#66d1ff" style="-fx-background-color: transparent;" text=" " AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/search_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnWord" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="328.0" onAction="#word" ripplerFill="#2c79ff" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="50.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/word_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnExcel" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="328.0" onAction="#excel" ripplerFill="#30c635" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/excel_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnPowerPoint" alignment="CENTER" contentDisplay="CENTER" layoutX="204.0" layoutY="328.0" onAction="#powerpoint" ripplerFill="#ff6060" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="50.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/powerpoint_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="toolbarPane" onMouseDragged="#moveDragged" onMousePressed="#movePressed" onMouseReleased="#moveReleased" prefHeight="38.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnClose" contentDisplay="CENTER" onAction="#cerrarVentana" prefHeight="6.0" prefWidth="33.0" text=" " AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/close_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnMaximize" alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="5.0" onAction="#maximizarVentana" text=" " AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="4.0">
+               <graphic>
+                  <ImageView fx:id="imgMaximize" fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/maximizeSize_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnMinimize" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" onAction="#minimizarVentana" text=" " AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="0.0">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/minimizeWindow_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="paneUp" onMouseDragged="#resizeUpDragged" onMousePressed="#resizeVerticalPressed" prefHeight="5.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="V_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="paneRight" onMouseDragged="#resizeRightDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="H_RESIZE" />
+         </cursor></Pane>
+      <Pane fx:id="paneDown" onMouseDragged="#resizeDownDragged" onMousePressed="#resizeVerticalPressed" prefHeight="5.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="V_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="paneLeft" onMouseDragged="#resizeLeftDragged" onMousePressed="#resizeHorizontalPressed" prefHeight="400.0" prefWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="H_RESIZE" />
+         </cursor></Pane>
+      <Pane fx:id="paneUpLeft" onMouseDragged="#resizeUpLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="NW_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="paneUpRight" onMouseDragged="#resizeUpRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="NE_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="paneDownRight" onMouseDragged="#resizeDownRightDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="SE_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="paneDownLeft" onMouseDragged="#resizeDownLeftDragged" onMousePressed="#resizeCornerPressed" prefHeight="10.0" prefWidth="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="SW_RESIZE" />
+         </cursor>
+      </Pane>
+   </children>
+</AnchorPane>
