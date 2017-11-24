@@ -14,7 +14,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+			AnchorPane root = FXMLLoader.load(getClass().getResource("Manual.fxml"));
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
 	        primaryStage.initStyle(StageStyle.TRANSPARENT);  // Le quita los bordes a la ventana
