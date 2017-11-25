@@ -36,7 +36,7 @@ public class SplashController implements Initializable {
 		ft.setNode(root);
 		ft.setFromValue(0);
 		ft.setToValue(1);
-		ft.setOnFinished(e -> delay(5));  // Se establece un delay antes de abrir el siguiente stage automaticamente
+		ft.setOnFinished(e -> delay(3));  // Se establece un delay antes de abrir el siguiente stage automaticamente
 		ft.play();
 	}
     
