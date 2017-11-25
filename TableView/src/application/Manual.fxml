@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" onMouseDragged="#moveDragged" onMousePressed="#movePressed" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManualController">
+<AnchorPane fx:id="root" onMouseDragged="#moveDragged" onMousePressed="#movePressed" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManualController">
    <children>
       <AnchorPane fx:id="pane1" style="-fx-background-color: #877CB0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,7 +24,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="150.0" prefHeight="210.0" text="Para visitar una página web nueva simplemente introduzca el nombre en la caja de texto y pulse el icono de buscar. Inmediatamente se guardará la web y aparecerá en la tabla.&#10;Para acceder una página web ya visitada pulse encima de ella en la tabla y haga click en el icono de buscar.&#10;Para borrar una página web del historial haga click sobre la que desea eliminar, y seguidamente pulse el botón de borrar." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="150.0" prefHeight="210.0" text="Para visitar una página web simplemente introduzca el nombre en la caja de texto y pulse el icono de buscar. Inmediatamente se guardará la web y aparecerá en la tabla.&#10;Para acceder a una página web ya visitada pulse encima de ella en la tabla y haga click en el icono de buscar.&#10;Para borrar una página web del historial haga click sobre la que desea eliminar, y seguidamente pulse el botón de borrar." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pane3" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #00B035;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
