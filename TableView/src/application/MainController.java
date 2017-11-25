@@ -68,7 +68,7 @@ public class MainController implements Initializable {
     	fxtoolbar = new FXToolbar(root, minimizeIcon, maximizeIcon);
     	
 		FadeTransition ft = new FadeTransition();
-		ft.setDuration(Duration.millis(1000));
+		ft.setDuration(Duration.millis(750));
 		ft.setNode(root);
 		ft.setFromValue(0);
 		ft.setToValue(1);
