@@ -60,7 +60,7 @@ public class ManualController implements Initializable {
 		}
     	else {
     		FadeTransition ft = new FadeTransition();
-    		ft.setDuration(Duration.millis(1000));
+    		ft.setDuration(Duration.millis(750));
     		ft.setNode(root);
     		ft.setFromValue(1);
     		ft.setToValue(0);
